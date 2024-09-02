@@ -25,12 +25,15 @@ function MyComponent({ title, age, isAdmin }) {
 	);
 }
 
-function MyLists(props) {
-	console.log(props);
+// function MyLists(props) {
+function MyLists({ listName, children }) {
+	// console.log(props);
 	return (
 		<ul>
-			<h6>{props.listName} Lists</h6>
-			{props.children}
+			{/* <h6>{props.listName} Lists</h6>
+			{props.children} */}
+			<h6>{listName} Lists</h6>
+			{children}
 		</ul>
 	);
 }
@@ -44,8 +47,9 @@ function App() {
 		<div className='container'>
 			{/* <MyComponent title='pavit' age={20} isAdmin={true} />
 			<MyComponent title='max' age={23} isAdmin={false} />
-			<MyComponent title='bung' age={2} isAdmin={false} /> */}
-			{/* <MyLists /> */}
+			<MyComponent title='bung' age={2} isAdmin={false} /> *
+			<MyLists /> */}
+			<MyLists listName='task' children={[<li>HW</li>, <li>Game</li>]} />
 			<MyLists listName='Fruits'>
 				<li>Apple</li>
 				<li>Banana</li>

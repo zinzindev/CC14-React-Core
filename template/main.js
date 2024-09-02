@@ -1,5 +1,11 @@
-// Render
-const domRoot = document.getElementById('root');
-const root = ReactDOM.createRoot(domRoot);
+// Gen UI
+// Child
+// Parent
+function App() {
+	return <div className='container'></div>;
+}
 
-root.render(App);
+// Render
+const domRoot = document.querySelector('#root');
+const root = ReactDOM.createRoot(domRoot);
+root.render(<App />);
