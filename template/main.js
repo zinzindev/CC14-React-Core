@@ -2,6 +2,9 @@
 // Child
 // Parent
 function App() {
+	// logic
+
+	// UI
 	return <div className='container'></div>;
 }
 

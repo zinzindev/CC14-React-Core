@@ -6,7 +6,7 @@ function Avatar({ name, src }) {
 			<div className='avatar__img--container'>
 				<img src={src} alt='avatar-pic' className='avatar__img' />
 			</div>
-			<p className='avatar__name'>{name}</p>
+			{/* <p className='avatar__name'>{name}</p> */}
 		</div>
 	);
 }
