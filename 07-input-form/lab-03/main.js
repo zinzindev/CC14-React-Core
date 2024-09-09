@@ -36,58 +36,62 @@ const DATA = [
 function App() {
 	// logic
 	const [selectedProvince, setSelectedProvince] = React.useState(DATA[0].province_normalize);
-	// console.log(selectedProvince);
 	const [districts, setDistricts] = React.useState(DATA[0].districts);
-	// console.log(districts);
 	const [selectedDistrict, setSelectedDistrict] = React.useState('');
-	// console.log(selectedDistrict);
 
+	console.log('APP');
 	const handleSelectProvince = (e) => {
-		let province = e.target.value;
-		console.log(province);
-		setSelectedProvince(province);
+		setSelectedProvince(e.target.value);
+		console.log(selectedProvince);
 
 		// เอา province ที่ user เลือก ไปหา province obj ใน DATA
-		const selectedProv = DATA.find((provObj) => provObj.province_normalize === province);
-		let districtArr = selectedProv.districts;
-		// console.log(districtArr);
+		const selectedProv = DATA.find((provObj) => provObj.province_normalize === e.target.value);
+		const districtArr = selectedProv.districts;
 		setDistricts(districtArr);
 	};
 
 	const handleSelectDistrict = (e) => {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		setSelectedDistrict(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('Test form');
 	};
 
 	// Child
 	// UI
 	return (
 		<div className='container'>
-			<div>
-				<label htmlFor='prov-name'>Province : </label>
-				<select id='prov-name' onChange={handleSelectProvince} value={selectedProvince}>
-					{DATA.map((provObj) => (
-						<option key={provObj.id} value={provObj.province_normalize}>
-							{provObj.province}
-						</option>
-					))}
-				</select>
-			</div>
-			<div>
-				<label htmlFor='district-name'>District : </label>
-				<select
-					name=''
-					id='district-name'
-					onChange={handleSelectDistrict}
-					value={selectedDistrict}
-				>
-					{districts.map((d) => (
-						<option key={d.id} value={d.district.toLowerCase()}>
-							{d.district}
-						</option>
-					))}
-				</select>
-			</div>
+			<form onSubmit={handleSubmit}>
+				<div>
+					<label htmlFor='prov-name'>Province : </label>
+					<select id='prov-name' onChange={handleSelectProvince} value={selectedProvince}>
+						{DATA.map((provObj) => (
+							<option key={provObj.id} value={provObj.province_normalize}>
+								{provObj.province}
+							</option>
+						))}
+					</select>
+				</div>
+				<div>
+					<label htmlFor='district-name'>District : </label>
+					<select
+						name=''
+						id='district-name'
+						onChange={handleSelectDistrict}
+						value={selectedDistrict}
+					>
+						{districts.map((d) => (
+							<option key={d.id} value={d.district.toLowerCase()}>
+								{d.district}
+							</option>
+						))}
+					</select>
+				</div>
+				<button type='submit'>Send form</button>
+			</form>
 		</div>
 	);
 }
